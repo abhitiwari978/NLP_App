@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>NLP App</h1> <br>
+
+    {% if message: %}
+        <p style="color: red;">{{message}}</p>
+    {% endif %}
+
+
+    <h3>Login Here</h3> <br>
+    <form action="/perform_login" method='post' class="login">
+        <label for="">Email</label> <br>
+        <input type="text" id="Email" name="user_mail" class="inp"><br><br>
+        <label for="">Password</label> <br>
+        <input type="password" id="password" name="user_pass" class="inp"><br><br>
+        <input type="submit" id="submit" value="login" class="button"><br>
+        <p>Not a member do <a href="/registration">Register</a></p>
+    </form>
+
+</body>
+</html>

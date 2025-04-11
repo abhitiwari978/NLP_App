@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model use</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    {% if response=="Sentiment Analysis": %}
+        <h1>{{response}}</h1>
+        <div class="sentiment">
+            <form action="/model/sentiment" method="post">
+                <label for="">Enter Text</label><br>
+                <input type="text" size="40" name="input_text" class="inp"><br><br>
+                <input type="submit" value="Sentiment Check" class="button_small">
+        </form><br><br>
+        <h3>{{output}}</h3>
+    {% endif %}
+
+    {% if response=="NER": %}
+        <h1>{{response}}</h1>
+        <form action="">
+
+        </form>
+    {% endif %}
+
+    {% if response=="Emotion Detection": %}
+        <h1>{{response}}</h1>
+        <div class="emotion">
+            <form action="/model/emotion" method="post">
+                <label for="">Enter Text</label><br>
+                <input type="text" size="40" name="input_text" class="inp"><br><br>
+                <input type="submit" value="Emotion Check" class="button_small">
+        </form><br><br>
+        <h3>{{output}}</h3>
+    {% endif %}
+
+    {% if response=="Recipe Recommendation": %}
+        <h1>{{response}}</h1>
+
+        <div class="recipe">
+        <form action="/model/recipe" method="post">
+            <label for="">Enter Description of Recipe you want</label><br>
+            <input type="text" size="40" name="input_text" class="inp"><br><br>
+            <input type="submit" value="Recommend Recipes" class="button_small">
+        </form><br><br>
+
+        <!-- {% for i in output %}
+            <p><strong>{{i}}</strong>>:{{output[i]}}</p><br>
+        {% endfor %} -->
+
+        {% if output: %}
+            {% set order = ['name', 'ingredients'] %}
+            {% for i in order: %}
+                <p><strong>{{ i.capitalize() }}</strong>: {{ output[i] }}</p><br>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+    {% endif %}
+
+</body>
+</html>
